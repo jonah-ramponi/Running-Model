@@ -27,7 +27,7 @@ Where:
         - The forward transform
         - The reverse transform
         - The rate of change
-    - The modelling component to choose (i.e. which base equation to use) should depend on an environment variable `EQUATION_CHOICE`.
+    - The modelling component to choose (i.e. which base equation to use - either from step 1 or step 2) should depend on an environment variable `EQUATION_CHOICE`.
     - Default arguments for `target_mileage`, `starting_mileage`, `a`, `b` should be read from environment variables, however if custom values are provided in the client request then these should take priority. Here, `n` should always be taken from the client request for the forward transform and the rate of change, and `weekly_mileage` should be taken from the client request for the inverse transform.
 4. Please include instructions on how to setup and run the code, and query your endpoints.
 
