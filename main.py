@@ -26,20 +26,5 @@ def run_streamlit_app(port=8501):
 
 
 if __name__ == "__main__":
-    try:
-        fastapi_thread = threading.Thread(
-            target=run_fastapi_server, kwargs={"port": 8000}
-        )
-        fastapi_thread.start()
-
-        streamlit_thread = threading.Thread(
-            target=run_streamlit_app, kwargs={"port": 8501}
-        )
-        streamlit_thread.start()
-
-        # Join threads
-        fastapi_thread.join()
-        streamlit_thread.join()
-
-    except KeyboardInterrupt:
-        sys.exit(0)
+    run_fastapi_server(port=8000)
+    # run_streamlit_app(port=8501)

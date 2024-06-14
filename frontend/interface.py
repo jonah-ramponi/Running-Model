@@ -5,7 +5,6 @@ With more time I'd connect this to the API, I just used this for experimentation
 """
 
 import os
-import argparse
 import pandas as pd
 import numpy as np
 
@@ -23,39 +22,7 @@ st.set_page_config(
 )
 
 
-def parse_arguments():
-    parser = argparse.ArgumentParser(description="Plan Distance Visualization")
-    parser.add_argument(
-        "--target_mileage",
-        type=int,
-        default=30,
-        help="The weekly mileage you aim to build up to (km).",
-    )
-    parser.add_argument(
-        "--starting_mileage",
-        type=int,
-        default=15,
-        help="Your starting weekly mileage (km).",
-    )
-    parser.add_argument(
-        "-a",
-        type=float,
-        default=0.75,
-        help="Parameter governing the shape of the curve (0 < a < 1).",
-    )
-    parser.add_argument(
-        "-b",
-        type=float,
-        default=1.0,
-        help="Parameter governing the shape of the curve (b > 0).",
-    )
-    parser.add_argument(
-        "--n_value", type=int, default=12, help="Number of weeks in your training plan."
-    )
-    return parser.parse_args()
-
-
-def visualize_plan(target_mileage, starting_mileage, a, b, n_value):
+def visualize_plan():
     with st.sidebar:
         st.markdown("#### Parameters")
 
@@ -143,7 +110,4 @@ def visualize_plan(target_mileage, starting_mileage, a, b, n_value):
 
 
 if __name__ == "__main__":
-    args = parse_arguments()
-    visualize_plan(
-        args.target_mileage, args.starting_mileage, args.a, args.b, args.n_value
-    )
+    visualize_plan()

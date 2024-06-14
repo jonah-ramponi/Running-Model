@@ -2,26 +2,21 @@
 Parameters handling
 """
 
+import os
 from typing import Annotated
 
-from pydantic import Field, NonNegativeFloat, PositiveFloat
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field, NonNegativeFloat, PositiveFloat, BaseModel
 
 
-class WeeklyMileageParams(BaseSettings):
+class WeeklyMileageParams(BaseModel):
     """This holds environment variables. Default value has been selected and set."""
 
-    # NOTE: Ensure you have created the .env file in the required place
-    # We could also read directly from the env with os.getenv or similar, but I chose a .env file for ease
-    model_config = SettingsConfigDict(env_file=".env")
-
-    # NOTE: Added constraint that target & starting mileage should be greater than or equal to 0.
-    starting_mileage: NonNegativeFloat = 0
-    target_mileage: NonNegativeFloat = 50
+    starting_mileage: NonNegativeFloat = os.getenv("STARTING_MILEAGE", default=0)
+    target_mileage: NonNegativeFloat = os.getenv("TARGET_MILEAGE", default=50)
 
     # This validates the a,b fields
-    a: Annotated[float, Field(gt=0, lt=1)] = 0.5
-    b: PositiveFloat = 0.5
+    a: Annotated[float, Field(gt=0, lt=1)] = os.getenv("A", default=0.5)
+    b: PositiveFloat = os.getenv("B", default=0.5)
 
     # NOTE: I added equation choice as an optional parameter in the requests as an alt to using env vars
     # TODO: This is not validated, but it might be a good idea to add validation to ensure the equation_choice

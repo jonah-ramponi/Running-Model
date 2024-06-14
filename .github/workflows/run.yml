@@ -28,14 +28,13 @@ jobs:
         pip install -r requirements.txt
         pip install .
 
-    - name: Create env file
+    - name: Test
       run: |
-          echo "STARTING_MILEAGE=10" > .env
-          echo "TARGET_MILEAGE=50" >> .env
-          echo "A=0.8" >> .env
-          echo "B=5" >> .env
-          echo "EQUATION_CHOICE=equation1" >> .env
-          echo "Created .env file with variables"
+          echo "STARTING_MILEAGE=10"
+          echo "TARGET_MILEAGE=50"
+          echo "A=0.8"
+          echo "B=5"
+          echo "EQUATION_CHOICE=equation1"
 
     - name: Run pytest
       run: |
