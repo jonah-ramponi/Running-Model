@@ -45,7 +45,7 @@ async def test_rate_of_change():
     }
     async with httpx.AsyncClient() as client:
         response = await client.post(url, json=payload)
-
+        print(f"Rate of Change Response: {response.status_code}")
         if response.status_code == 200:
             print(f"Result: {response.json()}")
             print(

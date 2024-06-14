@@ -26,14 +26,20 @@ def run_streamlit_app(port=8501):
 
 
 if __name__ == "__main__":
-    # Run FastAPI server on port 8000 in a separate thread
-    fastapi_thread = threading.Thread(target=run_fastapi_server, kwargs={"port": 8000})
-    fastapi_thread.start()
+    try:
+        fastapi_thread = threading.Thread(
+            target=run_fastapi_server, kwargs={"port": 8000}
+        )
+        fastapi_thread.start()
 
-    # Run Streamlit app on port 8501 in a separate thread
-    streamlit_thread = threading.Thread(target=run_streamlit_app, kwargs={"port": 8501})
-    streamlit_thread.start()
+        streamlit_thread = threading.Thread(
+            target=run_streamlit_app, kwargs={"port": 8501}
+        )
+        streamlit_thread.start()
 
-    # Join threads to prevent the main thread from exiting
-    fastapi_thread.join()
-    streamlit_thread.join()
+        # Join threads
+        fastapi_thread.join()
+        streamlit_thread.join()
+
+    except KeyboardInterrupt:
+        sys.exit(0)

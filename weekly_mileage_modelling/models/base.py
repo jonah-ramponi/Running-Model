@@ -126,7 +126,7 @@ class WeeklyMileageModel:
             params = WeeklyMileageParams()
 
         # Update the default params with provided kwargs
-        params_dict = params.dict()
+        params_dict = params.model_dump()
         params_dict.update(kwargs)
 
         # Return a new instance of WeeklyMileageParams with updated values

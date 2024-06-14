@@ -1,11 +1,13 @@
 
 #### Setup
 ```
-conda create -n weekly_mileage_model python=3.11
+conda create -n jonahs_env python=3.11
 
-conda activate weekly_mileage_model
+conda activate jonahs_env
 
 python -m pip install -r requirements.txt
+
+pip install .
 
 # Create .env, based on the template provided in .env.example (you could just rename .env.example)
 
@@ -19,6 +21,7 @@ python main.py
 * Setup to accept optional tag for equation in request, if you wish to pass it instead of switching between env vars
 * will read from .env, NOT the environment directly in this version.
 * used sympy for the math stuff, which should make this easier to extend to other models
+* under scripts/example_api_request.py you can see some examples to make calls. To make a call you must first run the api, which I do via python main.py 
 
 #### Equation 2 derivative 
 
@@ -44,9 +47,9 @@ The derivatives do not match, therefore the function is not differentiable at th
 * I have never written unit tests before, so I am sure what I've done is not best practices. Think that bit could be greatly improved! I did include some comments for Equation1 on derivations of answers, I don't want to spend any more time on this so didn't write them for equation 2. 
 * I think the way I handle overwriting args, such as a or b, could be written much better.
 * I think setting up with pydantic-settings reading from .env may not be what was expected.
+* not sure that the main.py script is ideal, I'd want more time to improve that
 
 #### Future Additions
 
 * I think it would be nice if the plans incorporated downtime. Every 4th week @ 90% of the previous weeks mileage. This could be an interesting problem to incorporate, I'd consider using the mod function for this (if n mod 4 == 3, then reduce mileage), either as a multiplier or as an additional term in the equation. 
 
-* 
