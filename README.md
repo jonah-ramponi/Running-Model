@@ -23,7 +23,7 @@ python -m streamlit run frontend/interface.py --server.port 8501
 #### Notes
 * Setup to accept optional tag for equation in request, if you wish to pass it instead of switching between env vars
 * used sympy for the math stuff, which should make this easier to extend to other models
-* under scripts/example_api_request.py you can see some examples to make calls. To make a call you must first run the api, which I do via python main.py 
+* under scripts/example_api_request.py you can see some examples to make calls. To make a call you must first run the api, which I do via python python weekly_mileage_modelling/api/run.py --port 8000
 * see github workflow for how I naively set env vars
 
 #### Equation 2 derivative 
