@@ -71,7 +71,9 @@ class WeeklyMileageModel:
 
         return n_value
 
-    def rate_of_change_with_respect_to_n(self, n_value: int, **kwargs) -> float:
+    def rate_of_change_with_respect_to_n(
+        self, n_value: int, epsilon: float = 1e-9, **kwargs
+    ) -> float:
         """Take the derivative of the equation w.r.t n, then substitute for n to return the derivative evaluated at n"""
         if n_value < 0:
             raise ValueError("You must pick a positive value for the week (n)")
@@ -89,7 +91,6 @@ class WeeklyMileageModel:
         derivative = sp.diff(self.equation.rhs, self.n).subs(self.n, n_value)
 
         # For now, I wrote a simple check to see if we are at the point which is not differentiable
-        epsilon = 1e-9  # add a precision level to compensate for fp precision issues
         if (
             abs(
                 self.starting_mileage
