@@ -23,13 +23,13 @@ jobs:
         python-version: 3.11
 
         
-    - name: Test
+    - name: Set env vars
       run: |
-        echo "STARTING_MILEAGE=10"
-        echo "TARGET_MILEAGE=50"
-        echo "A=0.8"
-        echo "B=5"
-        echo "EQUATION_CHOICE=equation1"
+        echo "STARTING_MILEAGE=10" >> $GITHUB_ENV
+        echo "TARGET_MILEAGE=50" >> $GITHUB_ENV
+        echo "A=0.8" >> $GITHUB_ENV
+        echo "B=5" >> $GITHUB_ENV
+        echo "EQUATION_CHOICE=equation1" >> $GITHUB_ENV
 
     - name: Install dependencies
       run: |
