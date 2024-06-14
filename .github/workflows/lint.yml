@@ -27,6 +27,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install .
+
+    - name: Create env file
+      run: |
+          echo "STARTING_MILEAGE=10" > .env
+          echo "TARGET_MILEAGE=50" >> .env
+          echo "A=0.8" >> .env
+          echo "B=5" >> .env
+          echo "EQUATION_CHOICE=equation1" >> .env
+          echo "Created .env file with variables"
+
     - name: Run pytest
       run: |
         pytest --maxfail=1 --disable-warnings
