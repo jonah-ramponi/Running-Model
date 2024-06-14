@@ -71,7 +71,7 @@ def load_equation_model(equation_choice: str = None):
         return get_selected_model(equation_choice)
 
     # If we did not get equation_choice set in the request, default to env.
-    equation_choice_default = os.getenv("EQUATION_CHOICE")
+    equation_choice_default = os.getenv("EQUATION_CHOICE", "equation1")
 
     return get_selected_model(equation_choice_default)
 
