@@ -1,0 +1,11 @@
+sympy
+pydantic
+python-dotenv
+pydantic-settings
+fastapi
+uvicorn
+httpx
+
+streamlit
+pytest
+ruff
