@@ -21,4 +21,4 @@ class WeeklyMileageParams(BaseModel):
     # NOTE: I added equation choice as an optional parameter in the requests as an alt to using env vars
     # TODO: This is not validated, but it might be a good idea to add validation to ensure the equation_choice
     # appears in the list of valid tags
-    equation_choice: str
+    equation_choice: str = os.getenv("EQUATION_CHOICE", default="equation1")

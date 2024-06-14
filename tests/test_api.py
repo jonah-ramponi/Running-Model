@@ -1,11 +1,8 @@
-import os
 from weekly_mileage_modelling.api.run import test_client
 
 
 # test an undefined endpoint to ensure it 404s
 def test_read_main():
-    for key, value in os.environ.items():
-        print(f"{key}: {value}")
     response = test_client.get("/bad")
     assert response.status_code == 404
 
